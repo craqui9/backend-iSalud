@@ -1,0 +1,9 @@
+npm init
+nodemon
+express
+body-parser
+cors
+mongoose
+express-fileupload
+jsonwebtoken
+bcrypt
