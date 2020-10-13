@@ -5,7 +5,42 @@ import bcrypt from 'bcrypt';
 
 const userRoutes = Router();
 
+//Login
+userRoutes.post('/login', (req: Request, res: Response) => {
 
+    const body = req.body;
+
+    Usuario.findOne({email: body.email}, (err, userDB) => {
+
+        if(err) throw err;
+
+        if(!userDB){
+            return res.json({
+                ok: false,
+                mensaje: 'Usuario/contraseña no son correctos.'
+            });
+        }
+
+        if(userDB.compararPassword(body.password)){
+            
+            res.json({
+                ok: true,
+                token: 'dfgasblk'
+            });
+
+        }else{
+            return res.json({
+                ok: false,
+                mensaje: 'Usuario/contraseña no son correctos.'
+            });
+        }
+
+    });
+
+});
+
+
+//Crear un Usuario
 userRoutes.post('/create', (req: Request, res: Response) => {
 
     const user = {
