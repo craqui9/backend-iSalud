@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { Usuario } from '../models/usuario.model';
+import bcrypt from 'bcrypt';
 
 
 const userRoutes = Router();
@@ -11,7 +12,7 @@ userRoutes.post('/create', (req: Request, res: Response) => {
         rol: req.body.rol,
         nombre: req.body.nombre,
         email: req.body.email,
-        password: req.body.password
+        password: bcrypt.hashSync(req.body.password, 10)
     };
 
     Usuario.create(user).then(userDB => {
