@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import { Usuario } from '../models/usuario.model';
 import bcrypt from 'bcrypt';
 import Token from '../classes/token';
+import { verificaToken } from '../middlewares/autenticacion';
 
 
 const userRoutes = Router();
@@ -86,6 +87,12 @@ userRoutes.post('/create', (req: Request, res: Response) => {
 
 });
 
+//Metodo que necesite autenticar el token (por ejemplo actualizar)
+/* userRoutes.post('/update', verificaToken,  (req: Request, res: Response) => {
+
+    //aaaaaaah?
+
+}); */
 
 
 export default userRoutes;

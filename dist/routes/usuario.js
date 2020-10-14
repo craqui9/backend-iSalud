@@ -69,4 +69,10 @@ userRoutes.post('/create', (req, res) => {
         });
     });
 });
+//Metodo que necesite autenticar el token (por ejemplo actualizar)
+/* userRoutes.post('/update', verificaToken,  (req: Request, res: Response) => {
+
+    //aaaaaaah?
+
+}); */
 exports.default = userRoutes;
