@@ -27,6 +27,18 @@ noticiasRoutes.post('/create', (req: Request, res: Response) => {
 
 });
 
+//Listar noticias
+noticiasRoutes.get('/list', async(req: Request, res: Response) => {
+
+    const noticias = await Noticias.find();
+
+    res.json({
+        ok: true,
+        noticias
+    });
+
+});
+
 
 
 export default noticiasRoutes;
