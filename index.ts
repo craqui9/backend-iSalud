@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import userRoutes from './routes/usuario';
 import citasRoutes from './routes/citas';
 import tratamientosRoutes from './routes/tratamientos';
+import noticiasRoutes from './routes/noticias';
 
 
 const server = new Server();
@@ -27,7 +28,7 @@ server.app.use('/citas', citasRoutes);
 server.app.use('/tratamientos', tratamientosRoutes);
 
 //Noticias
-//server.app.use('/noticias', noticiasRoutes);
+server.app.use('/noticias', noticiasRoutes);
 
 //-------------------------------------------------------------------------------------------
 //------------------------Conectar BBDD------------------------
