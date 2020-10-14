@@ -13,7 +13,7 @@ const citasSchema = new Schema({
         required: [true, 'Doctor necesario']
     },
     fecha: {
-        type: String,
+        type: Date,
         required: [true, 'Fecha necesaria']
     },
     resuelto: {
@@ -28,7 +28,7 @@ interface Icitas extends Document{
 
     usuario_paciente: String;
     usuario_doctor: String;
-    fecha: String;
+    fecha: Date;
     resuelto: Boolean;
 
 }

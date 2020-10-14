@@ -14,7 +14,7 @@ const citasSchema = new mongoose_1.Schema({
         required: [true, 'Doctor necesario']
     },
     fecha: {
-        type: String,
+        type: Date,
         required: [true, 'Fecha necesaria']
     },
     resuelto: {

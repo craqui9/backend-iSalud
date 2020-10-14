@@ -1,7 +1,10 @@
 import Server from './classes/server';
-import userRoutes from './routes/usuario';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+
+//Rutas de la app
+import userRoutes from './routes/usuario';
+import citasRoutes from './routes/citas';
 
 
 const server = new Server();
@@ -17,7 +20,7 @@ server.app.use(bodyParser.json());
 server.app.use('/user', userRoutes);
 
 //Citas
-//server.app.use('/citas', citasRoutes);
+server.app.use('/citas', citasRoutes);
 
 //Tratamientos
 //server.app.use('/tratamientos', tratamientosRoutes);
