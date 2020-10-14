@@ -26,6 +26,11 @@ const usuarioSchema = new mongoose_1.Schema({
     password: {
         type: String,
         required: [true, 'La contraseña es necesaria']
+    },
+    doctor: {
+        //El doctor asociado del usuario
+        type: String,
+        required: [true, 'El doctor asociado es necesario']
     }
 });
 usuarioSchema.method('compararPassword', function (password = '') {

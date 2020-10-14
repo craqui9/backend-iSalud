@@ -47,7 +47,8 @@ userRoutes.post('/create', (req: Request, res: Response) => {
         rol: req.body.rol,
         nombre: req.body.nombre,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10)
+        password: bcrypt.hashSync(req.body.password, 10),
+        doctor: req.body.doctor
     };
 
     Usuario.create(user).then(userDB => {

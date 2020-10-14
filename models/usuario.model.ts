@@ -22,6 +22,11 @@ const usuarioSchema = new Schema({
     password: {
         type: String,
         required: [true, 'La contraseña es necesaria']
+    },
+    doctor: {
+        //El doctor asociado del usuario
+        type: String,
+        required: [true, 'El doctor asociado es necesario']
     }
 
 });
@@ -43,6 +48,7 @@ interface Iusuario extends Document{
     nombre: string;
     email: string;
     password: string;
+    doctor: string;
 
     compararPassword(password: string): boolean;
 
