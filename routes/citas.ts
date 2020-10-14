@@ -29,6 +29,18 @@ citasRoutes.post('/create', (req: Request, res: Response) => {
 
 });
 
+//Listar todas las citas
+citasRoutes.get('/list', async(req: Request, res: Response) => {
+
+    const citas = await Citas.find();
+
+    res.json({
+        ok: true,
+        citas
+    });
+
+});
+
 
 
 export default citasRoutes;
