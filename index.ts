@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 //Rutas de la app
 import userRoutes from './routes/usuario';
 import citasRoutes from './routes/citas';
+import tratamientosRoutes from './routes/tratamientos';
 
 
 const server = new Server();
@@ -23,7 +24,7 @@ server.app.use('/user', userRoutes);
 server.app.use('/citas', citasRoutes);
 
 //Tratamientos
-//server.app.use('/tratamientos', tratamientosRoutes);
+server.app.use('/tratamientos', tratamientosRoutes);
 
 //Noticias
 //server.app.use('/noticias', noticiasRoutes);

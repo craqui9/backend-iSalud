@@ -52,7 +52,7 @@ interface Iusuario extends Document{
 
     compararPassword(password: string): boolean;
 
-}
+};
 
 
 export const Usuario = model<Iusuario>('Usuario', usuarioSchema);

@@ -9,6 +9,7 @@ const body_parser_1 = __importDefault(require("body-parser"));
 //Rutas de la app
 const usuario_1 = __importDefault(require("./routes/usuario"));
 const citas_1 = __importDefault(require("./routes/citas"));
+const tratamientos_1 = __importDefault(require("./routes/tratamientos"));
 const server = new server_1.default();
 //------------------------Body parser------------------------
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
@@ -20,7 +21,7 @@ server.app.use('/user', usuario_1.default);
 //Citas
 server.app.use('/citas', citas_1.default);
 //Tratamientos
-//server.app.use('/tratamientos', tratamientosRoutes);
+server.app.use('/tratamientos', tratamientos_1.default);
 //Noticias
 //server.app.use('/noticias', noticiasRoutes);
 //-------------------------------------------------------------------------------------------

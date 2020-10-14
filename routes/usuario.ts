@@ -35,8 +35,15 @@ userRoutes.post('/login', (req: Request, res: Response) => {
             });
             
             res.json({
+                //usar uno de los dos
                 ok: true,
-                token: tokenUser
+                //Pasar el token de autenticacion
+                token: tokenUser,
+                //Pasar los datos directamente sin la contraseña
+                rol: userDB.rol,
+                nombre: userDB.nombre,
+                email: userDB.email,
+                doctor_asociado: userDB.doctor
             });
 
         }else{

@@ -41,4 +41,5 @@ usuarioSchema.method('compararPassword', function (password = '') {
         return false;
     }
 });
+;
 exports.Usuario = mongoose_1.model('Usuario', usuarioSchema);
