@@ -33,22 +33,22 @@ const usuarioSchema = new Schema({
 
 usuarioSchema.method('compararPassword', function(password: string = ''): boolean{
 
-if(bcrypt.compareSync(password, this.password)){
-    return true;
-}else{
-    return false;
-}
+    if(bcrypt.compareSync(password, this.password)){
+        return true;
+    }else{
+        return false;
+    }
 
 });
 
 
 interface Iusuario extends Document{
 
-    rol: string;
-    nombre: string;
-    email: string;
-    password: string;
-    doctor: string;
+    rol: String;
+    nombre: String;
+    email: String;
+    password: String;
+    doctor: String;
 
     compararPassword(password: string): boolean;
 
