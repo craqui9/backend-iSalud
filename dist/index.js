@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./classes/server"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
 //Rutas de la app
 const usuario_1 = __importDefault(require("./routes/usuario"));
 const citas_1 = __importDefault(require("./routes/citas"));
@@ -15,6 +16,9 @@ const server = new server_1.default();
 //------------------------Body parser------------------------
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
 server.app.use(body_parser_1.default.json());
+//-------------------------------------------------------------------------------------------
+//------------------------Configurar CORS------------------------
+server.app.use(cors_1.default({ origin: true, credentials: true }));
 //-------------------------------------------------------------------------------------------
 //------------------------Rutas de mi app------------------------
 //Usuario

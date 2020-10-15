@@ -94,6 +94,18 @@ userRoutes.post('/create', (req: Request, res: Response) => {
 
 });
 
+//Listar usuarios
+userRoutes.get('/list', async(req: Request, res: Response) => {
+
+    const usuarios = await Usuario.find();
+
+    res.json({
+        ok: true,
+        usuarios
+    });
+
+});
+
 //Metodo que necesite autenticar el token (por ejemplo actualizar)
 /* userRoutes.post('/update', verificaToken,  (req: Request, res: Response) => {
 
