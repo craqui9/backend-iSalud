@@ -52,7 +52,7 @@ userRoutes.post('/login', (req, res) => {
         else {
             return res.json({
                 ok: false,
-                mensaje: 'Usuario/contraseña no son correctos.'
+                mensaje: 'Correo/contraseña no son correctos.'
             });
         }
     });
@@ -91,6 +91,14 @@ userRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function
     res.json({
         ok: true,
         usuarios
+    });
+}));
+//Eliminar usuario
+userRoutes.post('/delete', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    usuario_model_1.Usuario.remove({ email: req.body.email }, () => {
+        res.json({
+            ok: true
+        });
     });
 }));
 //Metodo que necesite autenticar el token (por ejemplo actualizar)

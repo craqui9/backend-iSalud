@@ -49,7 +49,7 @@ userRoutes.post('/login', (req: Request, res: Response) => {
         }else{
             return res.json({
                 ok: false,
-                mensaje: 'Usuario/contraseña no son correctos.'
+                mensaje: 'Correo/contraseña no son correctos.'
             });
         }
 
@@ -103,6 +103,19 @@ userRoutes.get('/list', async(req: Request, res: Response) => {
         ok: true,
         usuarios
     });
+
+});
+
+//Eliminar usuario
+userRoutes.post('/delete', async(req: Request, res: Response) => {
+
+    Usuario.remove({email: req.body.email}, () => {
+                        res.json({
+                            ok:true
+                        });
+                    });
+
+
 
 });
 
