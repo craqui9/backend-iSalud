@@ -94,6 +94,18 @@ userRoutes.post('/create', (req: Request, res: Response) => {
 
 });
 
+//Buscar usuario por email
+userRoutes.get('/email', async(req: Request, res: Response) => {
+
+    const usuario = await Usuario.findOne({email: req.body.email});
+
+    res.json({
+        ok: true,
+        usuario
+    });
+
+});
+
 //Listar usuarios
 userRoutes.get('/list', async(req: Request, res: Response) => {
 
@@ -108,8 +120,8 @@ userRoutes.get('/list', async(req: Request, res: Response) => {
 
 //Eliminar usuario
 userRoutes.post('/delete', async(req: Request, res: Response) => {
-
-    Usuario.remove({email: req.body.email}, () => {
+    
+   Usuario.deleteOne({email: req.body.email}, () => {
                         res.json({
                             ok:true
                         });

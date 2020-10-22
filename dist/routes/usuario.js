@@ -85,6 +85,14 @@ userRoutes.post('/create', (req, res) => {
         });
     });
 });
+//Buscar usuario por email
+userRoutes.get('/email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const usuario = yield usuario_model_1.Usuario.findOne({ email: req.body.email });
+    res.json({
+        ok: true,
+        usuario
+    });
+}));
 //Listar usuarios
 userRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const usuarios = yield usuario_model_1.Usuario.find();
@@ -95,7 +103,7 @@ userRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function
 }));
 //Eliminar usuario
 userRoutes.post('/delete', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    usuario_model_1.Usuario.remove({ email: req.body.email }, () => {
+    usuario_model_1.Usuario.deleteOne({ email: req.body.email }, () => {
         res.json({
             ok: true
         });
