@@ -95,9 +95,21 @@ userRoutes.post('/create', (req: Request, res: Response) => {
 });
 
 //Buscar usuario por email
-userRoutes.get('/email', async(req: Request, res: Response) => {
+userRoutes.post('/email', async(req: Request, res: Response) => {
 
     const usuario = await Usuario.findOne({email: req.body.email});
+
+    res.json({
+        ok: true,
+        usuario
+    });
+
+});
+
+//Buscar usuario por doctor
+userRoutes.post('/doctor', async(req: Request, res: Response) => {
+
+    const usuario = await Usuario.find({doctor: req.body.doctor});
 
     res.json({
         ok: true,

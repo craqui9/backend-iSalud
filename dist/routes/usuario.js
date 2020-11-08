@@ -86,8 +86,16 @@ userRoutes.post('/create', (req, res) => {
     });
 });
 //Buscar usuario por email
-userRoutes.get('/email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+userRoutes.post('/email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const usuario = yield usuario_model_1.Usuario.findOne({ email: req.body.email });
+    res.json({
+        ok: true,
+        usuario
+    });
+}));
+//Buscar usuario por doctor
+userRoutes.post('/doctor', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const usuario = yield usuario_model_1.Usuario.find({ doctor: req.body.doctor });
     res.json({
         ok: true,
         usuario
