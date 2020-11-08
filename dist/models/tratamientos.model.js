@@ -30,6 +30,10 @@ const tratamientosSchema = new mongoose_1.Schema({
     fecha_final: {
         type: Date,
         required: [true, 'Fecha final necesaria']
+    },
+    identificador: {
+        type: Number,
+        required: [true, 'Id necesario']
     }
 });
 ;

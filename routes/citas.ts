@@ -10,7 +10,9 @@ citasRoutes.post('/create', (req: Request, res: Response) => {
         usuario_paciente: req.body.usuario_paciente,
         usuario_doctor: req.body.usuario_doctor,
         fecha: req.body.fecha,
-        resuelto: req.body.resuelto
+        resuelto: req.body.resuelto,
+        motivo: req.body.motivo,
+        identificador: req.body.identificador
     };
 
     Citas.create(cita).then(citaDB => {

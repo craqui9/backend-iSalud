@@ -29,6 +29,10 @@ const tratamientosSchema = new Schema ({
     fecha_final: {
         type: Date,
         required: [true, 'Fecha final necesaria']
+    },
+    identificador: {
+        type: Number,
+        required: [true, 'Id necesario']
     }
 
 });

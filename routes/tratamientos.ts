@@ -12,7 +12,8 @@ tratamientosRoutes.post('/create', (req: Request, res: Response) => {
         nombre_tratamiento: req.body.nombre_tratamiento,
         descripcion: req.body.descripcion,
         fecha_inicio: req.body.fecha_inicio,
-        fecha_final: req.body.fecha_final
+        fecha_final: req.body.fecha_final,
+        identificador: req.body.identificador
     };
 
     Tratamientos.create(tratamiento).then(tratamientoDB => {

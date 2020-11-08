@@ -22,5 +22,13 @@ const citasSchema = new mongoose_1.Schema({
         type: Boolean,
         default: false
     },
+    motivo: {
+        type: String,
+        required: [true, 'Motivo necesario']
+    },
+    identificador: {
+        type: Number,
+        required: [true, 'Id necesario']
+    }
 });
 exports.Citas = mongoose_1.model('Citas', citasSchema);
