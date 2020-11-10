@@ -13,11 +13,11 @@ const citasSchema = new Schema({
         required: [true, 'Doctor necesario']
     },
     fecha: {
-        type: Date,
+        type: String,
         required: [true, 'Fecha necesaria']
     },
     hora: {
-        type: Date,
+        type: String,
         required: [true, 'Hora necesaria']
     },
     resuelto: {
