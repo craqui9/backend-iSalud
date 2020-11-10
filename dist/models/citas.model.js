@@ -17,6 +17,10 @@ const citasSchema = new mongoose_1.Schema({
         type: Date,
         required: [true, 'Fecha necesaria']
     },
+    hora: {
+        type: Date,
+        required: [true, 'Hora necesaria']
+    },
     resuelto: {
         //Aquí se define si se ha resuelto la consulta o no
         type: Boolean,

@@ -18,6 +18,7 @@ citasRoutes.post('/create', (req, res) => {
         usuario_paciente: req.body.usuario_paciente,
         usuario_doctor: req.body.usuario_doctor,
         fecha: req.body.fecha,
+        hora: req.body.hora,
         resuelto: req.body.resuelto,
         motivo: req.body.motivo,
         identificador: req.body.identificador
