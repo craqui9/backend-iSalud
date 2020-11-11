@@ -44,6 +44,30 @@ citasRoutes.get('/list', async(req: Request, res: Response) => {
 
 });
 
+//Listar citas por doctor
+citasRoutes.post('/doctor', async(req: Request, res: Response) => {
+
+    const doctor = await Citas.find({usuario_doctor: req.body.usuario_doctor});
+
+    res.json({
+        ok: true,
+        doctor
+    })
+
+});
+
+//Listar citas por paciente
+citasRoutes.post('/paciente', async(req: Request, res: Response) => {
+
+    const paciente = await Citas.find({usuario_paciente: req.body.usuario_paciente});
+
+    res.json({
+        ok: true,
+        paciente
+    })
+
+});
+
 
 
 export default citasRoutes;

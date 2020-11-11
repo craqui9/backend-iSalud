@@ -43,4 +43,20 @@ citasRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, functio
         citas
     });
 }));
+//Listar citas por doctor
+citasRoutes.post('/doctor', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const doctor = yield citas_model_1.Citas.find({ usuario_doctor: req.body.usuario_doctor });
+    res.json({
+        ok: true,
+        doctor
+    });
+}));
+//Listar citas por paciente
+citasRoutes.post('/paciente', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const paciente = yield citas_model_1.Citas.find({ usuario_paciente: req.body.usuario_paciente });
+    res.json({
+        ok: true,
+        paciente
+    });
+}));
 exports.default = citasRoutes;
