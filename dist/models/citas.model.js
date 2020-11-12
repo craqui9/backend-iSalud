@@ -13,6 +13,10 @@ const citasSchema = new mongoose_1.Schema({
         type: String,
         required: [true, 'Doctor necesario']
     },
+    nombre_paciente: {
+        type: String,
+        required: [true, 'Nombre necesario']
+    },
     fecha: {
         type: String,
         required: [true, 'Fecha necesaria']

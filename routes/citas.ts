@@ -9,6 +9,7 @@ citasRoutes.post('/create', (req: Request, res: Response) => {
     const cita = {
         usuario_paciente: req.body.usuario_paciente,
         usuario_doctor: req.body.usuario_doctor,
+        nombre_paciente: req.body.nombre_paciente,
         fecha: req.body.fecha,
         hora: req.body.hora,
         resuelto: req.body.resuelto,
