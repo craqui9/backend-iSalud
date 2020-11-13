@@ -13,11 +13,11 @@ const usuarioSchema = new Schema({
         type: String,
         required: [true, 'El nombre es necesario']
     },
-    email: {
+    dni: {
         //Es lo que voy a usar como clave primaria
         type: String,
         unique: true,
-        required: [true, 'El email es necesario']
+        required: [true, 'El dni es necesario']
     },
     password: {
         type: String,
@@ -27,6 +27,14 @@ const usuarioSchema = new Schema({
         //El doctor asociado del usuario
         type: String,
         required: [true, 'El doctor asociado es necesario']
+    },
+    fecha_nacimiento: {
+        type: String,
+        required: [true, 'El fecha_nacimiento necesario']
+    },
+    sexo: {
+        type: String,
+        required: [true, 'El sexo necesario']
     }
 
 });
@@ -46,9 +54,11 @@ interface Iusuario extends Document{
 
     rol: String;
     nombre: String;
-    email: String;
+    dni: String;
     password: String;
     doctor: String;
+    fecha_nacimiento: String;
+    sexo: String;
 
     compararPassword(password: string): boolean;
 

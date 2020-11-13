@@ -35,11 +35,11 @@ tratamientosRoutes.post('/create', (req: Request, res: Response) => {
 //Listar tratamientos
 tratamientosRoutes.get('/list', async(req: Request, res: Response) => {
 
-    const citas = await Tratamientos.find();
+    const tratamientos = await Tratamientos.find();
 
     res.json({
         ok: true,
-        citas
+        tratamientos
     });
 
 });

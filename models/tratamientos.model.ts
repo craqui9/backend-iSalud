@@ -3,12 +3,12 @@ import {Schema, model, Document} from 'mongoose'
 const tratamientosSchema = new Schema ({
 
     usuario_paciente: {
-        //La "clave primaria" de los usuarios es el email
+        //La "clave primaria" de los usuarios es el dni
         type: String,
         required: [true, 'Paciente necesario']
     },
     usuario_doctor: {
-        //La "clave primaria" de los usuarios es el email
+        //La "clave primaria" de los usuarios es el dni
         type: String,
         required: [true, 'Doctor necesario']
     },
@@ -43,8 +43,9 @@ interface Itratamientos extends Document{
     usuario_doctor: String,
     nombre_tratamiento: String,
     descripcion: String,
-    fecha_inicio: Date,
-    fecha_final: Date
+    fecha_inicio: String,
+    fecha_final: String,
+    identificador: String
 
 };
 

@@ -69,6 +69,35 @@ citasRoutes.post('/paciente', async(req: Request, res: Response) => {
 
 });
 
+//Modificar resuelto a true
+citasRoutes.post('/resuelto', async(req: any, res: Response) => {
+
+    const cita = await Citas.findOne({identificador: req.body.identificador});
+
+    const citaActualizada = {
+        resuelto: true
+    }
+
+    Citas.findByIdAndUpdate( cita?._id, citaActualizada, {new: true}, (err, citaDB) => {
+
+        if(err) throw err;
+
+        if(!citaDB){
+            return res.json({
+                ok: false,
+                mensaje: 'No existe la cita con ese id'
+            });
+        }
+
+        res.json({
+            ok: true,
+            citaActualizada
+        });
+
+    })
+
+});
+
 
 
 export default citasRoutes;

@@ -37,10 +37,10 @@ tratamientosRoutes.post('/create', (req, res) => {
 });
 //Listar tratamientos
 tratamientosRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const citas = yield tratamientos_model_1.Tratamientos.find();
+    const tratamientos = yield tratamientos_model_1.Tratamientos.find();
     res.json({
         ok: true,
-        citas
+        tratamientos
     });
 }));
 exports.default = tratamientosRoutes;

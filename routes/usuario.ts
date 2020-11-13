@@ -11,7 +11,7 @@ userRoutes.post('/login', (req: Request, res: Response) => {
 
     const body = req.body;
 
-    Usuario.findOne({email: body.email}, (err, userDB) => {
+    Usuario.findOne({dni: body.dni}, (err, userDB) => {
 
         if(err) throw err;
 
@@ -28,8 +28,10 @@ userRoutes.post('/login', (req: Request, res: Response) => {
                 _id: userDB._id,
                 rol: userDB.rol,
                 nombre: userDB.nombre,
-                email: userDB.email,
-                doctor: userDB.doctor
+                dni: userDB.dni,
+                doctor: userDB.doctor,
+                fecha_nacimiento: req.body.fecha_nacimiento,
+                sexo: req.body.sexo
 
             });
             
@@ -41,8 +43,10 @@ userRoutes.post('/login', (req: Request, res: Response) => {
                 //Pasar los datos directamente sin la contraseña
                 rol: userDB.rol,
                 nombre: userDB.nombre,
-                email: userDB.email,
-                doctor_asociado: userDB.doctor
+                dni: userDB.dni,
+                doctor_asociado: userDB.doctor,
+                fecha_nacimiento: req.body.fecha_nacimiento,
+                sexo: req.body.sexo
             });
 
         }else{
@@ -63,9 +67,11 @@ userRoutes.post('/create', (req: Request, res: Response) => {
     const user = {
         rol: req.body.rol,
         nombre: req.body.nombre,
-        email: req.body.email,
+        dni: req.body.dni,
         password: bcrypt.hashSync(req.body.password, 10),
-        doctor: req.body.doctor
+        doctor: req.body.doctor,
+        fecha_nacimiento: req.body.fecha_nacimiento,
+        sexo: req.body.sexo
     };
 
     Usuario.create(user).then(userDB => {
@@ -74,8 +80,10 @@ userRoutes.post('/create', (req: Request, res: Response) => {
             _id: userDB._id,
             rol: userDB.rol,
             nombre: userDB.nombre,
-            email: userDB.email,
-            doctor: userDB.doctor
+            dni: userDB.dni,
+            doctor: userDB.doctor,
+            fecha_nacimiento: req.body.fecha_nacimiento,
+            sexo: req.body.sexo
 
         });
         
@@ -93,10 +101,10 @@ userRoutes.post('/create', (req: Request, res: Response) => {
 
 });
 
-//Buscar usuario por email
-userRoutes.post('/email', async(req: Request, res: Response) => {
+//Buscar usuario por dni
+userRoutes.post('/dni', async(req: Request, res: Response) => {
 
-    const usuario = await Usuario.findOne({email: req.body.email});
+    const usuario = await Usuario.findOne({dni: req.body.dni});
 
     res.json({
         ok: true,
@@ -132,7 +140,7 @@ userRoutes.get('/list', async(req: Request, res: Response) => {
 //Eliminar usuario
 userRoutes.post('/delete', async(req: Request, res: Response) => {
     
-   Usuario.deleteOne({email: req.body.email}, () => {
+   Usuario.deleteOne({dni: req.body.dni}, () => {
                         res.json({
                             ok:true
                         });

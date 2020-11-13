@@ -3,12 +3,12 @@ import {Schema, model, Document} from 'mongoose';
 const citasSchema = new Schema({
 
     usuario_paciente: {
-        //La "clave primaria" de los usuarios es el email
+        //La "clave primaria" de los usuarios es el dni
         type: String,
         required: [true, 'Paciente necesario']
     },
     usuario_doctor: {
-        //La "clave primaria" de los usuarios es el email
+        //La "clave primaria" de los usuarios es el dni
         type: String,
         required: [true, 'Doctor necesario']
     },
@@ -44,8 +44,12 @@ interface Icitas extends Document{
 
     usuario_paciente: String;
     usuario_doctor: String;
-    fecha: Date;
+    nombre_paciente: String;
+    fecha: String;
+    hora: String;
     resuelto: Boolean;
+    motivo: String;
+    identificador: String;
 
 }
 

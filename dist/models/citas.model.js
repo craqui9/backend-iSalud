@@ -4,12 +4,12 @@ exports.Citas = void 0;
 const mongoose_1 = require("mongoose");
 const citasSchema = new mongoose_1.Schema({
     usuario_paciente: {
-        //La "clave primaria" de los usuarios es el email
+        //La "clave primaria" de los usuarios es el dni
         type: String,
         required: [true, 'Paciente necesario']
     },
     usuario_doctor: {
-        //La "clave primaria" de los usuarios es el email
+        //La "clave primaria" de los usuarios es el dni
         type: String,
         required: [true, 'Doctor necesario']
     },

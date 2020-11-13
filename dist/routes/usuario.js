@@ -20,7 +20,7 @@ const userRoutes = express_1.Router();
 //Login
 userRoutes.post('/login', (req, res) => {
     const body = req.body;
-    usuario_model_1.Usuario.findOne({ email: body.email }, (err, userDB) => {
+    usuario_model_1.Usuario.findOne({ dni: body.dni }, (err, userDB) => {
         if (err)
             throw err;
         if (!userDB) {
@@ -34,8 +34,10 @@ userRoutes.post('/login', (req, res) => {
                 _id: userDB._id,
                 rol: userDB.rol,
                 nombre: userDB.nombre,
-                email: userDB.email,
-                doctor: userDB.doctor
+                dni: userDB.dni,
+                doctor: userDB.doctor,
+                fecha_nacimiento: req.body.fecha_nacimiento,
+                sexo: req.body.sexo
             });
             res.json({
                 //usar uno de los dos
@@ -45,8 +47,10 @@ userRoutes.post('/login', (req, res) => {
                 //Pasar los datos directamente sin la contraseña
                 rol: userDB.rol,
                 nombre: userDB.nombre,
-                email: userDB.email,
-                doctor_asociado: userDB.doctor
+                dni: userDB.dni,
+                doctor_asociado: userDB.doctor,
+                fecha_nacimiento: req.body.fecha_nacimiento,
+                sexo: req.body.sexo
             });
         }
         else {
@@ -62,17 +66,21 @@ userRoutes.post('/create', (req, res) => {
     const user = {
         rol: req.body.rol,
         nombre: req.body.nombre,
-        email: req.body.email,
+        dni: req.body.dni,
         password: bcrypt_1.default.hashSync(req.body.password, 10),
-        doctor: req.body.doctor
+        doctor: req.body.doctor,
+        fecha_nacimiento: req.body.fecha_nacimiento,
+        sexo: req.body.sexo
     };
     usuario_model_1.Usuario.create(user).then(userDB => {
         const tokenUser = token_1.default.getJwtToken({
             _id: userDB._id,
             rol: userDB.rol,
             nombre: userDB.nombre,
-            email: userDB.email,
-            doctor: userDB.doctor
+            dni: userDB.dni,
+            doctor: userDB.doctor,
+            fecha_nacimiento: req.body.fecha_nacimiento,
+            sexo: req.body.sexo
         });
         res.json({
             ok: true,
@@ -85,9 +93,9 @@ userRoutes.post('/create', (req, res) => {
         });
     });
 });
-//Buscar usuario por email
-userRoutes.post('/email', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const usuario = yield usuario_model_1.Usuario.findOne({ email: req.body.email });
+//Buscar usuario por dni
+userRoutes.post('/dni', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const usuario = yield usuario_model_1.Usuario.findOne({ dni: req.body.dni });
     res.json({
         ok: true,
         usuario
@@ -111,7 +119,7 @@ userRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function
 }));
 //Eliminar usuario
 userRoutes.post('/delete', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    usuario_model_1.Usuario.deleteOne({ email: req.body.email }, () => {
+    usuario_model_1.Usuario.deleteOne({ dni: req.body.dni }, () => {
         res.json({
             ok: true
         });
