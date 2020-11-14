@@ -43,4 +43,12 @@ tratamientosRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, 
         tratamientos
     });
 }));
+//Listar tratamientos por paciente
+tratamientosRoutes.post('/paciente', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const tratamientos = yield tratamientos_model_1.Tratamientos.find({ usuario_paciente: req.body.usuario_paciente });
+    res.json({
+        ok: true,
+        tratamientos
+    });
+}));
 exports.default = tratamientosRoutes;

@@ -41,7 +41,7 @@ const usuarioSchema = new mongoose_1.Schema({
         required: [true, 'El sexo necesario']
     },
     telefono: {
-        type: Number,
+        type: String,
         required: [true, 'El telefono necesario']
     }
 });

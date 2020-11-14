@@ -37,7 +37,7 @@ const usuarioSchema = new Schema({
         required: [true, 'El sexo necesario']
     },
     telefono: {
-        type: Number,
+        type: String,
         required: [true, 'El telefono necesario']
     }
 
@@ -63,7 +63,7 @@ interface Iusuario extends Document{
     doctor: String;
     fecha_nacimiento: String;
     sexo: String;
-    telefono: Number;
+    telefono: String;
 
     compararPassword(password: string): boolean;
 
