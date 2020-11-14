@@ -31,7 +31,8 @@ userRoutes.post('/login', (req: Request, res: Response) => {
                 dni: userDB.dni,
                 doctor: userDB.doctor,
                 fecha_nacimiento: req.body.fecha_nacimiento,
-                sexo: req.body.sexo
+                sexo: req.body.sexo,
+                telefono: req.body.telefono
 
             });
             
@@ -46,7 +47,8 @@ userRoutes.post('/login', (req: Request, res: Response) => {
                 dni: userDB.dni,
                 doctor_asociado: userDB.doctor,
                 fecha_nacimiento: req.body.fecha_nacimiento,
-                sexo: req.body.sexo
+                sexo: req.body.sexo,
+                telefono: req.body.telefono
             });
 
         }else{
@@ -71,7 +73,8 @@ userRoutes.post('/create', (req: Request, res: Response) => {
         password: bcrypt.hashSync(req.body.password, 10),
         doctor: req.body.doctor,
         fecha_nacimiento: req.body.fecha_nacimiento,
-        sexo: req.body.sexo
+        sexo: req.body.sexo,
+        telefono: req.body.telefono
     };
 
     Usuario.create(user).then(userDB => {
@@ -83,7 +86,8 @@ userRoutes.post('/create', (req: Request, res: Response) => {
             dni: userDB.dni,
             doctor: userDB.doctor,
             fecha_nacimiento: req.body.fecha_nacimiento,
-            sexo: req.body.sexo
+            sexo: req.body.sexo,
+            telefono: req.body.telefono
 
         });
         

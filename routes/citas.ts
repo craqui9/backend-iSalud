@@ -94,6 +94,35 @@ citasRoutes.post('/resuelto', async(req: any, res: Response) => {
             citaActualizada
         });
 
+    });
+
+});
+
+//Modificar resuelto a false
+citasRoutes.post('/resueltoFalse', async(req: any, res: Response) => {
+
+    const cita = await Citas.findOne({identificador: req.body.identificador});
+
+    const citaActualizada = {
+        resuelto: false
+    }
+
+    Citas.findByIdAndUpdate( cita?._id, citaActualizada, {new: true}, (err, citaDB) => {
+
+        if(err) throw err;
+
+        if(!citaDB){
+            return res.json({
+                ok: false,
+                mensaje: 'No existe la cita con ese id'
+            });
+        }
+
+        res.json({
+            ok: true,
+            citaActualizada
+        });
+
     })
 
 });

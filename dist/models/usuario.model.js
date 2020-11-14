@@ -39,6 +39,10 @@ const usuarioSchema = new mongoose_1.Schema({
     sexo: {
         type: String,
         required: [true, 'El sexo necesario']
+    },
+    telefono: {
+        type: Number,
+        required: [true, 'El telefono necesario']
     }
 });
 usuarioSchema.method('compararPassword', function (password = '') {

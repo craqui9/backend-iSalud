@@ -23,11 +23,11 @@ const tratamientosSchema = new Schema ({
         required: [true, 'Descripcion necesaria']
     },
     fecha_inicio: {
-        type: Date,
+        type: String,
         required: [true, 'Fecha inicio necesaria']
     },
     fecha_final: {
-        type: Date,
+        type: String,
         required: [true, 'Fecha final necesaria']
     },
     identificador: {
@@ -39,13 +39,13 @@ const tratamientosSchema = new Schema ({
 
 interface Itratamientos extends Document{
 
-    usuario_paciente: String,
-    usuario_doctor: String,
-    nombre_tratamiento: String,
-    descripcion: String,
-    fecha_inicio: String,
-    fecha_final: String,
-    identificador: String
+    usuario_paciente: String;
+    usuario_doctor: String;
+    nombre_tratamiento: String;
+    descripcion: String;
+    fecha_inicio: String;
+    fecha_final: String;
+    identificador: Number;
 
 };
 

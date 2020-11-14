@@ -24,11 +24,11 @@ const tratamientosSchema = new mongoose_1.Schema({
         required: [true, 'Descripcion necesaria']
     },
     fecha_inicio: {
-        type: Date,
+        type: String,
         required: [true, 'Fecha inicio necesaria']
     },
     fecha_final: {
-        type: Date,
+        type: String,
         required: [true, 'Fecha final necesaria']
     },
     identificador: {

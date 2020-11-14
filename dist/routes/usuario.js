@@ -37,7 +37,8 @@ userRoutes.post('/login', (req, res) => {
                 dni: userDB.dni,
                 doctor: userDB.doctor,
                 fecha_nacimiento: req.body.fecha_nacimiento,
-                sexo: req.body.sexo
+                sexo: req.body.sexo,
+                telefono: req.body.telefono
             });
             res.json({
                 //usar uno de los dos
@@ -50,7 +51,8 @@ userRoutes.post('/login', (req, res) => {
                 dni: userDB.dni,
                 doctor_asociado: userDB.doctor,
                 fecha_nacimiento: req.body.fecha_nacimiento,
-                sexo: req.body.sexo
+                sexo: req.body.sexo,
+                telefono: req.body.telefono
             });
         }
         else {
@@ -70,7 +72,8 @@ userRoutes.post('/create', (req, res) => {
         password: bcrypt_1.default.hashSync(req.body.password, 10),
         doctor: req.body.doctor,
         fecha_nacimiento: req.body.fecha_nacimiento,
-        sexo: req.body.sexo
+        sexo: req.body.sexo,
+        telefono: req.body.telefono
     };
     usuario_model_1.Usuario.create(user).then(userDB => {
         const tokenUser = token_1.default.getJwtToken({
@@ -80,7 +83,8 @@ userRoutes.post('/create', (req, res) => {
             dni: userDB.dni,
             doctor: userDB.doctor,
             fecha_nacimiento: req.body.fecha_nacimiento,
-            sexo: req.body.sexo
+            sexo: req.body.sexo,
+            telefono: req.body.telefono
         });
         res.json({
             ok: true,

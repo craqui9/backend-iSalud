@@ -35,6 +35,10 @@ const usuarioSchema = new Schema({
     sexo: {
         type: String,
         required: [true, 'El sexo necesario']
+    },
+    telefono: {
+        type: Number,
+        required: [true, 'El telefono necesario']
     }
 
 });
@@ -59,6 +63,7 @@ interface Iusuario extends Document{
     doctor: String;
     fecha_nacimiento: String;
     sexo: String;
+    telefono: Number;
 
     compararPassword(password: string): boolean;
 

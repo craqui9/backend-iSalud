@@ -49,7 +49,7 @@ interface Icitas extends Document{
     hora: String;
     resuelto: Boolean;
     motivo: String;
-    identificador: String;
+    identificador: Number;
 
 }
 

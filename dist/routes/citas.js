@@ -81,4 +81,25 @@ citasRoutes.post('/resuelto', (req, res) => __awaiter(void 0, void 0, void 0, fu
         });
     });
 }));
+//Modificar resuelto a false
+citasRoutes.post('/resueltoFalse', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const cita = yield citas_model_1.Citas.findOne({ identificador: req.body.identificador });
+    const citaActualizada = {
+        resuelto: false
+    };
+    citas_model_1.Citas.findByIdAndUpdate(cita === null || cita === void 0 ? void 0 : cita._id, citaActualizada, { new: true }, (err, citaDB) => {
+        if (err)
+            throw err;
+        if (!citaDB) {
+            return res.json({
+                ok: false,
+                mensaje: 'No existe la cita con ese id'
+            });
+        }
+        res.json({
+            ok: true,
+            citaActualizada
+        });
+    });
+}));
 exports.default = citasRoutes;
