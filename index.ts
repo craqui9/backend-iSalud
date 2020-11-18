@@ -8,6 +8,7 @@ import userRoutes from './routes/usuario';
 import citasRoutes from './routes/citas';
 import tratamientosRoutes from './routes/tratamientos';
 import noticiasRoutes from './routes/noticias';
+import pedirCitaRoutes from './routes/pedirCita';
 
 
 const server = new Server();
@@ -34,6 +35,9 @@ server.app.use('/tratamientos', tratamientosRoutes);
 
 //Noticias
 server.app.use('/noticias', noticiasRoutes);
+
+//Pedir Cita
+server.app.use('/pedirCita', pedirCitaRoutes);
 
 //-------------------------------------------------------------------------------------------
 //------------------------Conectar BBDD------------------------
