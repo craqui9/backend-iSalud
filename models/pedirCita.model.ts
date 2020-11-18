@@ -32,6 +32,10 @@ const pedirCitaSchema = new Schema({
     motivo: {
         type: String,
         required: [true, 'Motivo necesario']
+    },
+    identificador: {
+        type: Number,
+        required: [true, 'Id necesario']
     }
 
 });
@@ -45,6 +49,7 @@ interface IPedirCita extends Document{
     hora: string;
     resuelto: boolean;
     motivo: string;
+    identificador: number;
 
 }
 

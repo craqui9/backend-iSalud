@@ -7,21 +7,22 @@ const pedirCitaRoutes = Router();
 //Crear una Cita
 pedirCitaRoutes.post('/create', (req: Request, res: Response) => {
 
-    const cita = {
+    const pedirCitas = {
         usuario_paciente: req.body.usuario_paciente,
         usuario_doctor: req.body.usuario_doctor,
         nombre_paciente: req.body.nombre_paciente,
         fecha: req.body.fecha,
         hora: req.body.hora,
         resuelto: req.body.resuelto,
-        motivo: req.body.motivo
+        motivo: req.body.motivo,
+        identificador: req.body.identificador
     };
 
-    PedirCita.create(cita).then(citaDB => {
+    PedirCita.create(pedirCitas).then(pedirCitaDB => {
 
         res.json({
             ok: true,
-            cita: citaDB
+            pedirCita: pedirCitaDB
         });
 
     }).catch(err => {
@@ -36,11 +37,11 @@ pedirCitaRoutes.post('/create', (req: Request, res: Response) => {
 //Listar todo
 pedirCitaRoutes.get('/list', async(req: Request, res: Response) => {
 
-    const citas = await PedirCita.find();
+    const pedirCitas = await PedirCita.find();
 
     res.json({
         ok: true,
-        citas
+        pedirCitas
     });
 
 });
@@ -60,13 +61,13 @@ pedirCitaRoutes.post('/doctor', async(req: Request, res: Response) => {
 //Modificar resuelto a true
 pedirCitaRoutes.post('/resuelto', async(req: any, res: Response) => {
 
-    const cita = await PedirCita.findOne({identificador: req.body.identificador});
+    const pedirCitas = await PedirCita.findOne({identificador: req.body.identificador});
 
     const citaActualizada = {
         resuelto: true
     }
 
-    PedirCita.findByIdAndUpdate( cita?._id, citaActualizada, {new: true}, (err, citaDB) => {
+    PedirCita.findByIdAndUpdate( pedirCitas?._id, citaActualizada, {new: true}, (err, citaDB) => {
 
         if(err) throw err;
 

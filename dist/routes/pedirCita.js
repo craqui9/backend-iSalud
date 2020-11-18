@@ -14,19 +14,20 @@ const pedirCita_model_1 = require("../models/pedirCita.model");
 const pedirCitaRoutes = express_1.Router();
 //Crear una Cita
 pedirCitaRoutes.post('/create', (req, res) => {
-    const cita = {
+    const pedirCitas = {
         usuario_paciente: req.body.usuario_paciente,
         usuario_doctor: req.body.usuario_doctor,
         nombre_paciente: req.body.nombre_paciente,
         fecha: req.body.fecha,
         hora: req.body.hora,
         resuelto: req.body.resuelto,
-        motivo: req.body.motivo
+        motivo: req.body.motivo,
+        identificador: req.body.identificador
     };
-    pedirCita_model_1.PedirCita.create(cita).then(citaDB => {
+    pedirCita_model_1.PedirCita.create(pedirCitas).then(pedirCitaDB => {
         res.json({
             ok: true,
-            cita: citaDB
+            pedirCita: pedirCitaDB
         });
     }).catch(err => {
         res.json({
@@ -37,10 +38,10 @@ pedirCitaRoutes.post('/create', (req, res) => {
 });
 //Listar todo
 pedirCitaRoutes.get('/list', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const citas = yield pedirCita_model_1.PedirCita.find();
+    const pedirCitas = yield pedirCita_model_1.PedirCita.find();
     res.json({
         ok: true,
-        citas
+        pedirCitas
     });
 }));
 //Listar citas por doctor
@@ -53,11 +54,11 @@ pedirCitaRoutes.post('/doctor', (req, res) => __awaiter(void 0, void 0, void 0, 
 }));
 //Modificar resuelto a true
 pedirCitaRoutes.post('/resuelto', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const cita = yield pedirCita_model_1.PedirCita.findOne({ identificador: req.body.identificador });
+    const pedirCitas = yield pedirCita_model_1.PedirCita.findOne({ identificador: req.body.identificador });
     const citaActualizada = {
         resuelto: true
     };
-    pedirCita_model_1.PedirCita.findByIdAndUpdate(cita === null || cita === void 0 ? void 0 : cita._id, citaActualizada, { new: true }, (err, citaDB) => {
+    pedirCita_model_1.PedirCita.findByIdAndUpdate(pedirCitas === null || pedirCitas === void 0 ? void 0 : pedirCitas._id, citaActualizada, { new: true }, (err, citaDB) => {
         if (err)
             throw err;
         if (!citaDB) {

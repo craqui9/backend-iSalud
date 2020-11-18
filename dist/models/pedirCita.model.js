@@ -33,6 +33,10 @@ const pedirCitaSchema = new mongoose_1.Schema({
     motivo: {
         type: String,
         required: [true, 'Motivo necesario']
+    },
+    identificador: {
+        type: Number,
+        required: [true, 'Id necesario']
     }
 });
 exports.PedirCita = mongoose_1.model('PedirCita', pedirCitaSchema);
