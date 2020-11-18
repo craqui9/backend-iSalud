@@ -34,6 +34,10 @@ const tratamientosSchema = new mongoose_1.Schema({
     identificador: {
         type: Number,
         required: [true, 'Id necesario']
+    },
+    resuelto: {
+        type: Boolean,
+        default: false
     }
 });
 ;

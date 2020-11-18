@@ -13,7 +13,8 @@ tratamientosRoutes.post('/create', (req: Request, res: Response) => {
         descripcion: req.body.descripcion,
         fecha_inicio: req.body.fecha_inicio,
         fecha_final: req.body.fecha_final,
-        identificador: req.body.identificador
+        identificador: req.body.identificador,
+        resuelto: req.body.resuelto
     };
 
     Tratamientos.create(tratamiento).then(tratamientoDB => {
@@ -52,6 +53,35 @@ tratamientosRoutes.post('/paciente', async(req: Request, res: Response) => {
     res.json({
         ok: true,
         tratamientos
+    });
+
+});
+
+//Modificar resuelto a true
+tratamientosRoutes.post('/resuelto', async(req: any, res: Response) => {
+
+    const tratamiento = await Tratamientos.findOne({identificador: req.body.identificador});
+
+    const tratamientoActualizado = {
+        resuelto: true
+    }
+
+    Tratamientos.findByIdAndUpdate(tratamiento?._id, tratamientoActualizado, {new: true}, (err, tratamientoDB) => {
+
+        if(err) throw err;
+
+        if(!tratamientoDB){
+            return res.json({
+                ok: false,
+                mensaje: 'No existe el tratamiento con ese id'
+            })
+        }
+
+        res.json({
+            ok: true,
+            tratamientoActualizado
+        });
+
     });
 
 });

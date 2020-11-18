@@ -33,6 +33,10 @@ const tratamientosSchema = new Schema ({
     identificador: {
         type: Number,
         required: [true, 'Id necesario']
+    },
+    resuelto: {
+        type: Boolean,
+        default: false
     }
 
 });
@@ -46,6 +50,7 @@ interface Itratamientos extends Document{
     fecha_inicio: String;
     fecha_final: String;
     identificador: Number;
+    resuelto: Boolean;
 
 };
 
